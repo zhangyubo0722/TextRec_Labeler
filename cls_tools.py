@@ -226,37 +226,6 @@ if __name__ == "__main__":
             )
 
         with gr.Row():
-            folder5_button = gr.Button(value="复制到单字识别‌文件夹", variant='primary')
-            folder6_button = gr.Button(value="复制到通用场景‌文件夹", variant='primary')
-            folder7_button = gr.Button(value="复制到艺术字体文件夹", variant='primary')
-            folder8_button = gr.Button(value="复制到特殊字符文件夹", variant='primary')
-
-            folder5_button.click(
-                lambda: copy_image_to_folder(image_paths[current_index - 1][0], "single_character",
-                                             image_paths[current_index - 1][1], updated_records, output_file_path),
-                inputs=[],
-                outputs=[operation_result],
-            )
-            folder6_button.click(
-                lambda: copy_image_to_folder(image_paths[current_index - 1][0], "general_scenes",
-                                             image_paths[current_index - 1][1], updated_records, output_file_path),
-                inputs=[],
-                outputs=[operation_result],
-            )
-            folder7_button.click(
-                lambda: copy_image_to_folder(image_paths[current_index - 1][0], "artistic_text",
-                                             image_paths[current_index - 1][1], updated_records, output_file_path),
-                inputs=[],
-                outputs=[operation_result],
-            )
-            folder8_button.click(
-                lambda: copy_image_to_folder(image_paths[current_index - 1][0], "special_characters",
-                                             image_paths[current_index - 1][1], updated_records, output_file_path),
-                inputs=[],
-                outputs=[operation_result],
-            )
-
-        with gr.Row():
             folder9_button = gr.Button(value="复制到希腊字母文件夹", variant='primary')
             folder10_button = gr.Button(value="复制到旋转文本文件夹", variant='primary')
             folder11_button = gr.Button(value="复制到日文文件夹", variant='primary')
