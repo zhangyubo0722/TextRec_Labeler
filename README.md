@@ -1,4 +1,4 @@
-# 基于PaddleOCR的文本识别标注工具
+# 一、基于PaddleOCR的文本识别标注工具
 
 **说明：** 本工具主要是对PaddleOCR的文本识别结果进行重新标注，方便后续训练。
 
@@ -57,3 +57,33 @@ python tools.py --file_name xxx.txt --server_name xx.xx.xx.xx --server_port xxx
 标注后的结果请查看 `标注文件保存路径` 中输入的文件路径。
 
 **注意：** 为确保标注结果及时保存，请在前端页面断开前，点击 `更新标注文件` 按钮（命令行启动命令kill，网络断开等，都会导致前端页面断开）。
+
+# 二、图像分类工具
+
+**说明：** 本工具主要是对本地图像数据进行分类，方便构建评估集。
+
+<a name="1"></a>
+## 1. 安装
+
+  ```
+  pip install -r requirements.txt
+  ```
+
+<a name="2"></a>
+## 2. 工具使用
+
+```
+cd /path/to/ocr_rec_labeled_tools
+```
+
+启动命令
+
+```
+python cls_tools.py --file_name xxx.txt --server_name xx.xx.xx.xx --server_port xxx --output_file xxx.txt
+```
+
+`--file_name` 图片标注文件路径， `--server_name` 和 `--server_port` 为服务器的ip地址和端口号，`--output_file` 为更新后的标注结果保存路径。
+启动后，在浏览器中输入 `http://xx.xx.xx.xx:xxx/`，进入标注页面。
+
+<p align="center">
+ <img src="https://github.com/user-attachments/assets/184ca575-0615-4d7f-b8da-b4ae38c775ee" align="middle" width = "600"/>
