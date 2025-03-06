@@ -146,11 +146,9 @@ def create_gradio_interface(image_manager):
             object-fit: contain;
         }
     """) as demo:
-        # 状态管理
         current_image_path = gr.State("")
         current_label = gr.State("")
 
-        # 界面布局
         with gr.Row():
             with gr.Column(scale=2):
                 with gr.Row(elem_classes="image-container"):
@@ -169,7 +167,6 @@ def create_gradio_interface(image_manager):
 
         operation_result = gr.Textbox(label="操作结果", interactive=False)
 
-        # 文件夹按钮
         with gr.Row():
             folder_buttons = [gr.Button(f"复制到{folder}文件夹") for folder in folders]
 
@@ -184,7 +181,6 @@ def create_gradio_interface(image_manager):
                 ""
             ]
 
-        # 导航事件
         def navigate(is_next):
             image_info = image_manager.next_image() if is_next else image_manager.prev_image()
             return update_display(image_info)
@@ -193,14 +189,12 @@ def create_gradio_interface(image_manager):
             image_info = image_manager.jump_to_image(int(index))
             return update_display(image_info)
 
-        # 初始化显示第一张图
         demo.load(
             lambda: update_display(image_manager.process_image(0)),
             None, 
             [image_display, path_display, pred_display, proofread_text, operation_result]
         )
 
-        # 绑定导航按钮
         prev_btn.click(
             lambda: navigate(False), 
             None,
@@ -219,7 +213,6 @@ def create_gradio_interface(image_manager):
             [image_display, path_display, pred_display, proofread_text, operation_result]
         )
 
-        # 文件夹复制按钮事件
         for btn, folder in zip(folder_buttons, folders):
             btn.click(
                 lambda path, label, folder=folder: 
